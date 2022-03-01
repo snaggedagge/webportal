@@ -17,12 +17,20 @@ export class AppComponent {
       .subscribe(websites => this.websites = websites);
   }
 
-  calculateDiff(dateSent:Date){
+  calculateDiff(dateSent:Date): string {
     let currentDate = new Date();
     dateSent = new Date(dateSent);
-    var diffMs = (currentDate.getTime() - dateSent.getTime());
-    let diffMins = Math.floor(((diffMs % 86400000) % 3600000) / 60000); // minutes
-    console.log(diffMins)
-    return diffMs/(1000*60);
+    let diffMs = (currentDate.getTime() - dateSent.getTime());
+    let diffMinutes = diffMs/(1000*60);
+    let diffHours = diffMinutes/60;
+    let diffDays = diffHours/24;
+
+    if (diffDays > 0) {
+      return diffDays.toFixed(0) + ' days';
+    }
+    if (diffHours > 0) {
+      return diffHours.toFixed(0) + ' hours';
+    }
+    return diffMinutes.toFixed(0) + ' minutes';
   }
 }

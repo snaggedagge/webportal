@@ -119,7 +119,7 @@
           "cdk-hnb659fds-assets-145158422295-eu-north-1"
         ],
         "SourceObjectKeys": [
-          "d152fea46457d9393e082cbb82619ae9ecafd8f940c9e61c5c58e4632d100147.zip"
+          "68767bc2a824367bdda6f7a57874cdbbac2b799b0dbaed256664dc47825ec9b9.zip"
         ],
         "DestinationBucketName": {
           "Ref": "WebportalBucket4137ABB5"
