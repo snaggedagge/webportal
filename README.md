@@ -6,3 +6,5 @@ Whenever a standalone application with an changing/unknown IP adress is connecte
 it should connect to this webportal to let it know where it is.
 
 Application originally built on spring-boot, migrated to S3 with a static Angular application for cost reasons
+
+Webportal can be access on [dkarlsso.com](http://dkarlsso.com)

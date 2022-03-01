@@ -25,10 +25,10 @@ export class AppComponent {
     let diffHours = diffMinutes/60;
     let diffDays = diffHours/24;
 
-    if (diffDays > 0) {
+    if (diffDays > 1) {
       return diffDays.toFixed(0) + ' days';
     }
-    if (diffHours > 0) {
+    if (diffHours > 1) {
       return diffHours.toFixed(0) + ' hours';
     }
     return diffMinutes.toFixed(0) + ' minutes';

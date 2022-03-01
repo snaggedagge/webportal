@@ -1,11 +1,7 @@
-# Welcome to your CDK Java project!
+# webportal-infra
 
-You should explore the contents of this project. It demonstrates a CDK app with an instance of a stack (`AwsStack`)
-which contains an Amazon SQS queue that is subscribed to an Amazon SNS topic.
-
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
-
-It is a [Maven](https://maven.apache.org/) based project, so you can open this project with any Maven compatible Java IDE to build and run tests.
+Infra project for creating a S3 bucket which the Webportal runs on.
+Same bucket is also used by IoT devices to upload their current location to, inside a websites.json file.
 
 ## Useful commands
 
