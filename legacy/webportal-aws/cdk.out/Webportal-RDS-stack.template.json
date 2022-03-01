@@ -1,0 +1,124 @@
+{
+  "Resources": {
+    "WebportalRDSSecurityGroup8B970717": {
+      "Type": "AWS::EC2::SecurityGroup",
+      "Properties": {
+        "GroupDescription": "Security group for Webportal RDS database",
+        "GroupName": "rds-webportal-securityGroup",
+        "SecurityGroupEgress": [
+          {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "Allow all outbound traffic by default",
+            "IpProtocol": "-1"
+          }
+        ],
+        "VpcId": "vpc-4c4d672a"
+      },
+      "Metadata": {
+        "aws:cdk:path": "Webportal-RDS-stack/WebportalRDSSecurityGroup/Resource"
+      }
+    },
+    "WebportalRDSSecurityGroupIngress": {
+      "Type": "AWS::EC2::SecurityGroupIngress",
+      "Properties": {
+        "IpProtocol": "tcp",
+        "CidrIp": "0.0.0.0/0",
+        "FromPort": 3306,
+        "GroupId": {
+          "Fn::GetAtt": [
+            "WebportalRDSSecurityGroup8B970717",
+            "GroupId"
+          ]
+        },
+        "ToPort": 3306
+      },
+      "Metadata": {
+        "aws:cdk:path": "Webportal-RDS-stack/WebportalRDSSecurityGroupIngress"
+      }
+    },
+    "WebportalRDSDatabaseSubnetGroup17902797": {
+      "Type": "AWS::RDS::DBSubnetGroup",
+      "Properties": {
+        "DBSubnetGroupDescription": "Subnet group for WebportalRDSDatabase database",
+        "SubnetIds": [
+          "subnet-d1ce6f8b",
+          "subnet-04f19562",
+          "subnet-4b552203"
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "Webportal-RDS-stack/WebportalRDSDatabase/SubnetGroup"
+      }
+    },
+    "WebportalRDSDatabase0B756546": {
+      "Type": "AWS::RDS::DBInstance",
+      "Properties": {
+        "DBInstanceClass": "db.t2.micro",
+        "AllocatedStorage": "20",
+        "AutoMinorVersionUpgrade": false,
+        "CopyTagsToSnapshot": true,
+        "DBSnapshotIdentifier": "arn:aws:rds:eu-west-1:145158422295:snapshot:webportal-rds-stack-snapshot-webportalrdsdatabase0b756546-4e9t89s7ox3m",
+        "DBSubnetGroupName": {
+          "Ref": "WebportalRDSDatabaseSubnetGroup17902797"
+        },
+        "DeletionProtection": false,
+        "Engine": "mysql",
+        "MultiAZ": false,
+        "Port": "3306",
+        "PubliclyAccessible": true,
+        "StorageType": "gp2",
+        "VPCSecurityGroups": [
+          {
+            "Fn::GetAtt": [
+              "WebportalRDSSecurityGroup8B970717",
+              "GroupId"
+            ]
+          }
+        ]
+      },
+      "UpdateReplacePolicy": "Snapshot",
+      "Metadata": {
+        "aws:cdk:path": "Webportal-RDS-stack/WebportalRDSDatabase/Resource"
+      }
+    },
+    "DatabaseRecordSet": {
+      "Type": "AWS::Route53::RecordSet",
+      "Properties": {
+        "Name": "mysql.dkarlsso.com",
+        "Type": "CNAME",
+        "HostedZoneName": "dkarlsso.com.",
+        "ResourceRecords": [
+          {
+            "Fn::GetAtt": [
+              "WebportalRDSDatabase0B756546",
+              "Endpoint.Address"
+            ]
+          }
+        ],
+        "TTL": "300"
+      },
+      "Metadata": {
+        "aws:cdk:path": "Webportal-RDS-stack/DatabaseRecordSet"
+      }
+    },
+    "CDKMetadata": {
+      "Type": "AWS::CDK::Metadata",
+      "Properties": {
+        "Modules": "aws-cdk=1.134.0,@aws-cdk/assets=1.45.0,@aws-cdk/aws-cloudwatch=1.45.0,@aws-cdk/aws-ec2=1.45.0,@aws-cdk/aws-elasticbeanstalk=1.45.0,@aws-cdk/aws-events=1.45.0,@aws-cdk/aws-iam=1.45.0,@aws-cdk/aws-kms=1.45.0,@aws-cdk/aws-lambda=1.45.0,@aws-cdk/aws-logs=1.45.0,@aws-cdk/aws-rds=1.45.0,@aws-cdk/aws-route53=1.45.0,@aws-cdk/aws-s3=1.45.0,@aws-cdk/aws-s3-assets=1.45.0,@aws-cdk/aws-sam=1.45.0,@aws-cdk/aws-secretsmanager=1.45.0,@aws-cdk/aws-sqs=1.45.0,@aws-cdk/aws-ssm=1.45.0,@aws-cdk/cdk-assets-schema=1.45.0,@aws-cdk/cloud-assembly-schema=1.45.0,@aws-cdk/core=1.45.0,@aws-cdk/cx-api=1.45.0,@aws-cdk/region-info=1.45.0,jsii-runtime=Java/1.8.0_161"
+      }
+    }
+  },
+  "Outputs": {
+    "ExportsOutputFnGetAttWebportalRDSDatabase0B756546EndpointAddress575A37A5": {
+      "Value": {
+        "Fn::GetAtt": [
+          "WebportalRDSDatabase0B756546",
+          "Endpoint.Address"
+        ]
+      },
+      "Export": {
+        "Name": "Webportal-RDS-stack:ExportsOutputFnGetAttWebportalRDSDatabase0B756546EndpointAddress575A37A5"
+      }
+    }
+  }
+}

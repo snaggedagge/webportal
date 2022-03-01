@@ -1,0 +1,138 @@
+{
+  "Resources": {
+    "WebportalApplication": {
+      "Type": "AWS::ElasticBeanstalk::Application",
+      "Properties": {
+        "ApplicationName": "WebportalApplication"
+      },
+      "Metadata": {
+        "aws:cdk:path": "Webportal-stack/WebportalApplication"
+      }
+    },
+    "WebportalApplicationVersion": {
+      "Type": "AWS::ElasticBeanstalk::ApplicationVersion",
+      "Properties": {
+        "ApplicationName": {
+          "Ref": "WebportalApplication"
+        },
+        "SourceBundle": {
+          "S3Bucket": "elasticbeanstalk-eu-west-1-145158422295",
+          "S3Key": "uploads/webportal-1.0.jar"
+        },
+        "Description": "Application for webportal"
+      },
+      "Metadata": {
+        "aws:cdk:path": "Webportal-stack/WebportalApplicationVersion"
+      }
+    },
+    "WebportalApplicationConfiguration": {
+      "Type": "AWS::ElasticBeanstalk::ConfigurationTemplate",
+      "Properties": {
+        "ApplicationName": {
+          "Ref": "WebportalApplication"
+        },
+        "OptionSettings": [
+          {
+            "Namespace": "aws:autoscaling:launchconfiguration",
+            "OptionName": "IamInstanceProfile",
+            "Value": "aws-elasticbeanstalk-ec2-role"
+          },
+          {
+            "Namespace": "aws:autoscaling:launchconfiguration",
+            "OptionName": "InstanceType",
+            "Value": "t3.micro"
+          },
+          {
+            "Namespace": "aws:elasticbeanstalk:environment",
+            "OptionName": "EnvironmentType",
+            "Value": "SingleInstance"
+          },
+          {
+            "Namespace": "aws:elasticbeanstalk:application:environment",
+            "OptionName": "WEBPORTAL_SQL_PASSWORD",
+            "Value": "lddo7wG8NBXTlx4dRYBa"
+          },
+          {
+            "Namespace": "aws:elasticbeanstalk:application:environment",
+            "OptionName": "WEBPORTAL_SQL_USER",
+            "Value": "webportal"
+          },
+          {
+            "Namespace": "aws:elasticbeanstalk:application:environment",
+            "OptionName": "WEBPORTAL_SQL_URL",
+            "Value": {
+              "Fn::ImportValue": "Webportal-RDS-stack:ExportsOutputFnGetAttWebportalRDSDatabase0B756546EndpointAddress575A37A5"
+            }
+          }
+        ],
+        "SolutionStackName": "arn:aws:elasticbeanstalk:eu-west-1::platform/Java 8 running on 64bit Amazon Linux/2.11.17"
+      },
+      "Metadata": {
+        "aws:cdk:path": "Webportal-stack/WebportalApplicationConfiguration"
+      }
+    },
+    "WebportalEnvironment": {
+      "Type": "AWS::ElasticBeanstalk::Environment",
+      "Properties": {
+        "ApplicationName": {
+          "Ref": "WebportalApplication"
+        },
+        "TemplateName": {
+          "Ref": "WebportalApplicationConfiguration"
+        },
+        "VersionLabel": {
+          "Ref": "WebportalApplicationVersion"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "Webportal-stack/WebportalEnvironment"
+      }
+    },
+    "WebportalRecordSet": {
+      "Type": "AWS::Route53::RecordSet",
+      "Properties": {
+        "Name": "dkarlsso.com",
+        "Type": "A",
+        "HostedZoneName": "dkarlsso.com.",
+        "ResourceRecords": [
+          {
+            "Fn::GetAtt": [
+              "WebportalEnvironment",
+              "EndpointURL"
+            ]
+          }
+        ],
+        "TTL": "300"
+      },
+      "Metadata": {
+        "aws:cdk:path": "Webportal-stack/WebportalRecordSet"
+      }
+    },
+    "WebportalSpecificRecordSet": {
+      "Type": "AWS::Route53::RecordSet",
+      "Properties": {
+        "Name": "webportal.dkarlsso.com",
+        "Type": "A",
+        "HostedZoneName": "dkarlsso.com.",
+        "ResourceRecords": [
+          {
+            "Fn::GetAtt": [
+              "WebportalEnvironment",
+              "EndpointURL"
+            ]
+          }
+        ],
+        "TTL": "300"
+      },
+      "Metadata": {
+        "aws:cdk:path": "Webportal-stack/WebportalSpecificRecordSet"
+      }
+    },
+    "CDKMetadata": {
+      "Type": "AWS::CDK::Metadata",
+      "Properties": {
+        "Modules": "aws-cdk=1.134.0,@aws-cdk/assets=1.45.0,@aws-cdk/aws-cloudwatch=1.45.0,@aws-cdk/aws-ec2=1.45.0,@aws-cdk/aws-elasticbeanstalk=1.45.0,@aws-cdk/aws-events=1.45.0,@aws-cdk/aws-iam=1.45.0,@aws-cdk/aws-kms=1.45.0,@aws-cdk/aws-lambda=1.45.0,@aws-cdk/aws-logs=1.45.0,@aws-cdk/aws-rds=1.45.0,@aws-cdk/aws-route53=1.45.0,@aws-cdk/aws-s3=1.45.0,@aws-cdk/aws-s3-assets=1.45.0,@aws-cdk/aws-sam=1.45.0,@aws-cdk/aws-secretsmanager=1.45.0,@aws-cdk/aws-sqs=1.45.0,@aws-cdk/aws-ssm=1.45.0,@aws-cdk/cdk-assets-schema=1.45.0,@aws-cdk/cloud-assembly-schema=1.45.0,@aws-cdk/core=1.45.0,@aws-cdk/cx-api=1.45.0,@aws-cdk/region-info=1.45.0,jsii-runtime=Java/1.8.0_161"
+      }
+    }
+  }
+}

@@ -1,0 +1,304 @@
+{
+  "version": "tree-0.1",
+  "tree": {
+    "id": "App",
+    "path": "",
+    "children": {
+      "Tree": {
+        "id": "Tree",
+        "path": "Tree"
+      },
+      "Webportal-RDS-stack": {
+        "id": "Webportal-RDS-stack",
+        "path": "Webportal-RDS-stack",
+        "children": {
+          "DefaultVpc": {
+            "id": "DefaultVpc",
+            "path": "Webportal-RDS-stack/DefaultVpc",
+            "children": {
+              "PublicSubnet1": {
+                "id": "PublicSubnet1",
+                "path": "Webportal-RDS-stack/DefaultVpc/PublicSubnet1"
+              },
+              "PublicSubnet2": {
+                "id": "PublicSubnet2",
+                "path": "Webportal-RDS-stack/DefaultVpc/PublicSubnet2"
+              },
+              "PublicSubnet3": {
+                "id": "PublicSubnet3",
+                "path": "Webportal-RDS-stack/DefaultVpc/PublicSubnet3"
+              }
+            }
+          },
+          "WebportalRDSSecurityGroup": {
+            "id": "WebportalRDSSecurityGroup",
+            "path": "Webportal-RDS-stack/WebportalRDSSecurityGroup",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "Webportal-RDS-stack/WebportalRDSSecurityGroup/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::EC2::SecurityGroup",
+                  "aws:cdk:cloudformation:props": {
+                    "groupDescription": "Security group for Webportal RDS database",
+                    "groupName": "rds-webportal-securityGroup",
+                    "securityGroupEgress": [
+                      {
+                        "cidrIp": "0.0.0.0/0",
+                        "description": "Allow all outbound traffic by default",
+                        "ipProtocol": "-1"
+                      }
+                    ],
+                    "vpcId": "vpc-4c4d672a"
+                  }
+                }
+              }
+            }
+          },
+          "WebportalRDSSecurityGroupIngress": {
+            "id": "WebportalRDSSecurityGroupIngress",
+            "path": "Webportal-RDS-stack/WebportalRDSSecurityGroupIngress",
+            "attributes": {
+              "aws:cdk:cloudformation:type": "AWS::EC2::SecurityGroupIngress",
+              "aws:cdk:cloudformation:props": {
+                "ipProtocol": "tcp",
+                "cidrIp": "0.0.0.0/0",
+                "fromPort": 3306,
+                "groupId": {
+                  "Fn::GetAtt": [
+                    "WebportalRDSSecurityGroup8B970717",
+                    "GroupId"
+                  ]
+                },
+                "toPort": 3306
+              }
+            }
+          },
+          "WebportalRDSDatabase": {
+            "id": "WebportalRDSDatabase",
+            "path": "Webportal-RDS-stack/WebportalRDSDatabase",
+            "children": {
+              "SubnetGroup": {
+                "id": "SubnetGroup",
+                "path": "Webportal-RDS-stack/WebportalRDSDatabase/SubnetGroup",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::RDS::DBSubnetGroup",
+                  "aws:cdk:cloudformation:props": {
+                    "dbSubnetGroupDescription": "Subnet group for WebportalRDSDatabase database",
+                    "subnetIds": [
+                      "subnet-d1ce6f8b",
+                      "subnet-04f19562",
+                      "subnet-4b552203"
+                    ]
+                  }
+                }
+              },
+              "Resource": {
+                "id": "Resource",
+                "path": "Webportal-RDS-stack/WebportalRDSDatabase/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::RDS::DBInstance",
+                  "aws:cdk:cloudformation:props": {
+                    "dbInstanceClass": "db.t2.micro",
+                    "allocatedStorage": "20",
+                    "autoMinorVersionUpgrade": false,
+                    "copyTagsToSnapshot": true,
+                    "dbSnapshotIdentifier": "arn:aws:rds:eu-west-1:145158422295:snapshot:webportal-rds-stack-snapshot-webportalrdsdatabase0b756546-4e9t89s7ox3m",
+                    "dbSubnetGroupName": {
+                      "Ref": "WebportalRDSDatabaseSubnetGroup17902797"
+                    },
+                    "deletionProtection": false,
+                    "engine": "mysql",
+                    "multiAz": false,
+                    "port": "3306",
+                    "publiclyAccessible": true,
+                    "storageType": "gp2",
+                    "vpcSecurityGroups": [
+                      {
+                        "Fn::GetAtt": [
+                          "WebportalRDSSecurityGroup8B970717",
+                          "GroupId"
+                        ]
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "DatabaseRecordSet": {
+            "id": "DatabaseRecordSet",
+            "path": "Webportal-RDS-stack/DatabaseRecordSet",
+            "attributes": {
+              "aws:cdk:cloudformation:type": "AWS::Route53::RecordSet",
+              "aws:cdk:cloudformation:props": {
+                "name": "mysql.dkarlsso.com",
+                "type": "CNAME",
+                "hostedZoneName": "dkarlsso.com.",
+                "resourceRecords": [
+                  {
+                    "Fn::GetAtt": [
+                      "WebportalRDSDatabase0B756546",
+                      "Endpoint.Address"
+                    ]
+                  }
+                ],
+                "ttl": "300"
+              }
+            }
+          },
+          "Exports": {
+            "id": "Exports",
+            "path": "Webportal-RDS-stack/Exports",
+            "children": {
+              "Output{\"Fn::GetAtt\":[\"WebportalRDSDatabase0B756546\",\"Endpoint.Address\"]}": {
+                "id": "Output{\"Fn::GetAtt\":[\"WebportalRDSDatabase0B756546\",\"Endpoint.Address\"]}",
+                "path": "Webportal-RDS-stack/Exports/Output{\"Fn::GetAtt\":[\"WebportalRDSDatabase0B756546\",\"Endpoint.Address\"]}"
+              }
+            }
+          }
+        }
+      },
+      "Webportal-stack": {
+        "id": "Webportal-stack",
+        "path": "Webportal-stack",
+        "children": {
+          "WebportalApplication": {
+            "id": "WebportalApplication",
+            "path": "Webportal-stack/WebportalApplication",
+            "attributes": {
+              "aws:cdk:cloudformation:type": "AWS::ElasticBeanstalk::Application",
+              "aws:cdk:cloudformation:props": {
+                "applicationName": "WebportalApplication"
+              }
+            }
+          },
+          "WebportalApplicationVersion": {
+            "id": "WebportalApplicationVersion",
+            "path": "Webportal-stack/WebportalApplicationVersion",
+            "attributes": {
+              "aws:cdk:cloudformation:type": "AWS::ElasticBeanstalk::ApplicationVersion",
+              "aws:cdk:cloudformation:props": {
+                "applicationName": {
+                  "Ref": "WebportalApplication"
+                },
+                "sourceBundle": {
+                  "s3Bucket": "elasticbeanstalk-eu-west-1-145158422295",
+                  "s3Key": "uploads/webportal-1.0.jar"
+                },
+                "description": "Application for webportal"
+              }
+            }
+          },
+          "WebportalApplicationConfiguration": {
+            "id": "WebportalApplicationConfiguration",
+            "path": "Webportal-stack/WebportalApplicationConfiguration",
+            "attributes": {
+              "aws:cdk:cloudformation:type": "AWS::ElasticBeanstalk::ConfigurationTemplate",
+              "aws:cdk:cloudformation:props": {
+                "applicationName": {
+                  "Ref": "WebportalApplication"
+                },
+                "optionSettings": [
+                  {
+                    "namespace": "aws:autoscaling:launchconfiguration",
+                    "optionName": "IamInstanceProfile",
+                    "value": "aws-elasticbeanstalk-ec2-role"
+                  },
+                  {
+                    "namespace": "aws:autoscaling:launchconfiguration",
+                    "optionName": "InstanceType",
+                    "value": "t3.micro"
+                  },
+                  {
+                    "namespace": "aws:elasticbeanstalk:environment",
+                    "optionName": "EnvironmentType",
+                    "value": "SingleInstance"
+                  },
+                  {
+                    "namespace": "aws:elasticbeanstalk:application:environment",
+                    "optionName": "WEBPORTAL_SQL_PASSWORD",
+                    "value": "lddo7wG8NBXTlx4dRYBa"
+                  },
+                  {
+                    "namespace": "aws:elasticbeanstalk:application:environment",
+                    "optionName": "WEBPORTAL_SQL_USER",
+                    "value": "webportal"
+                  },
+                  {
+                    "namespace": "aws:elasticbeanstalk:application:environment",
+                    "optionName": "WEBPORTAL_SQL_URL",
+                    "value": {
+                      "Fn::ImportValue": "Webportal-RDS-stack:ExportsOutputFnGetAttWebportalRDSDatabase0B756546EndpointAddress575A37A5"
+                    }
+                  }
+                ],
+                "solutionStackName": "arn:aws:elasticbeanstalk:eu-west-1::platform/Java 8 running on 64bit Amazon Linux/2.11.17"
+              }
+            }
+          },
+          "WebportalEnvironment": {
+            "id": "WebportalEnvironment",
+            "path": "Webportal-stack/WebportalEnvironment",
+            "attributes": {
+              "aws:cdk:cloudformation:type": "AWS::ElasticBeanstalk::Environment",
+              "aws:cdk:cloudformation:props": {
+                "applicationName": {
+                  "Ref": "WebportalApplication"
+                },
+                "templateName": {
+                  "Ref": "WebportalApplicationConfiguration"
+                },
+                "versionLabel": {
+                  "Ref": "WebportalApplicationVersion"
+                }
+              }
+            }
+          },
+          "WebportalRecordSet": {
+            "id": "WebportalRecordSet",
+            "path": "Webportal-stack/WebportalRecordSet",
+            "attributes": {
+              "aws:cdk:cloudformation:type": "AWS::Route53::RecordSet",
+              "aws:cdk:cloudformation:props": {
+                "name": "dkarlsso.com",
+                "type": "A",
+                "hostedZoneName": "dkarlsso.com.",
+                "resourceRecords": [
+                  {
+                    "Fn::GetAtt": [
+                      "WebportalEnvironment",
+                      "EndpointURL"
+                    ]
+                  }
+                ],
+                "ttl": "300"
+              }
+            }
+          },
+          "WebportalSpecificRecordSet": {
+            "id": "WebportalSpecificRecordSet",
+            "path": "Webportal-stack/WebportalSpecificRecordSet",
+            "attributes": {
+              "aws:cdk:cloudformation:type": "AWS::Route53::RecordSet",
+              "aws:cdk:cloudformation:props": {
+                "name": "webportal.dkarlsso.com",
+                "type": "A",
+                "hostedZoneName": "dkarlsso.com.",
+                "resourceRecords": [
+                  {
+                    "Fn::GetAtt": [
+                      "WebportalEnvironment",
+                      "EndpointURL"
+                    ]
+                  }
+                ],
+                "ttl": "300"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

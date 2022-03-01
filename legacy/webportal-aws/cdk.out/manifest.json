@@ -1,0 +1,263 @@
+{
+  "version": "5.0.0",
+  "artifacts": {
+    "Tree": {
+      "type": "cdk:tree",
+      "properties": {
+        "file": "tree.json"
+      }
+    },
+    "Webportal-RDS-stack": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://145158422295/eu-west-1",
+      "properties": {
+        "templateFile": "Webportal-RDS-stack.template.json"
+      },
+      "metadata": {
+        "/Webportal-RDS-stack/WebportalRDSSecurityGroup/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebportalRDSSecurityGroup8B970717",
+            "trace": [
+              "new SecurityGroup (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-kernel-IcbmOi\\node_modules\\@aws-cdk\\aws-ec2\\lib\\security-group.js:173:30)",
+              "C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:8412:58",
+              "Kernel._wrapSandboxCode (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:8840:24)",
+              "Kernel._create (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:8412:34)",
+              "Kernel.create (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:8153:29)",
+              "KernelHost.processRequest (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:9761:36)",
+              "KernelHost.run (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:9724:22)",
+              "Immediate._onImmediate (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:9725:46)",
+              "processImmediate (node:internal/timers:464:21)"
+            ]
+          }
+        ],
+        "/Webportal-RDS-stack/WebportalRDSSecurityGroupIngress": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebportalRDSSecurityGroupIngress",
+            "trace": [
+              "C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:8412:58",
+              "Kernel._wrapSandboxCode (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:8840:24)",
+              "Kernel._create (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:8412:34)",
+              "Kernel.create (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:8153:29)",
+              "KernelHost.processRequest (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:9761:36)",
+              "KernelHost.run (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:9724:22)",
+              "Immediate._onImmediate (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:9725:46)",
+              "processImmediate (node:internal/timers:464:21)"
+            ]
+          }
+        ],
+        "/Webportal-RDS-stack/WebportalRDSDatabase/SubnetGroup": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebportalRDSDatabaseSubnetGroup17902797",
+            "trace": [
+              "new DatabaseInstanceNew (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-kernel-IcbmOi\\node_modules\\@aws-cdk\\aws-rds\\lib\\instance.js:207:29)",
+              "new DatabaseInstanceSource (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-kernel-IcbmOi\\node_modules\\@aws-cdk\\aws-rds\\lib\\instance.js:283:9)",
+              "new DatabaseInstanceFromSnapshot (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-kernel-IcbmOi\\node_modules\\@aws-cdk\\aws-rds\\lib\\instance.js:391:9)",
+              "C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:8412:58",
+              "Kernel._wrapSandboxCode (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:8840:24)",
+              "Kernel._create (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:8412:34)",
+              "Kernel.create (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:8153:29)",
+              "KernelHost.processRequest (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:9761:36)",
+              "KernelHost.run (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:9724:22)",
+              "Immediate._onImmediate (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:9725:46)",
+              "processImmediate (node:internal/timers:464:21)"
+            ]
+          }
+        ],
+        "/Webportal-RDS-stack/WebportalRDSDatabase/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebportalRDSDatabase0B756546",
+            "trace": [
+              "new DatabaseInstanceFromSnapshot (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-kernel-IcbmOi\\node_modules\\@aws-cdk\\aws-rds\\lib\\instance.js:410:26)",
+              "C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:8412:58",
+              "Kernel._wrapSandboxCode (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:8840:24)",
+              "Kernel._create (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:8412:34)",
+              "Kernel.create (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:8153:29)",
+              "KernelHost.processRequest (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:9761:36)",
+              "KernelHost.run (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:9724:22)",
+              "Immediate._onImmediate (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:9725:46)",
+              "processImmediate (node:internal/timers:464:21)"
+            ]
+          }
+        ],
+        "/Webportal-RDS-stack/DatabaseRecordSet": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DatabaseRecordSet",
+            "trace": [
+              "C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:8412:58",
+              "Kernel._wrapSandboxCode (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:8840:24)",
+              "Kernel._create (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:8412:34)",
+              "Kernel.create (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:8153:29)",
+              "KernelHost.processRequest (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:9761:36)",
+              "KernelHost.run (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:9724:22)",
+              "Immediate._onImmediate (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:9725:46)",
+              "processImmediate (node:internal/timers:464:21)"
+            ]
+          }
+        ],
+        "/Webportal-RDS-stack/Exports/Output{\"Fn::GetAtt\":[\"WebportalRDSDatabase0B756546\",\"Endpoint.Address\"]}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ExportsOutputFnGetAttWebportalRDSDatabase0B756546EndpointAddress575A37A5",
+            "trace": [
+              "createImportValue (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-kernel-IcbmOi\\node_modules\\@aws-cdk\\core\\lib\\private\\refs.js:153:9)",
+              "resolveValue (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-kernel-IcbmOi\\node_modules\\@aws-cdk\\core\\lib\\private\\refs.js:85:12)",
+              "Object.resolveReferences (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-kernel-IcbmOi\\node_modules\\@aws-cdk\\core\\lib\\private\\refs.js:26:30)",
+              "Object.prepareApp (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-kernel-IcbmOi\\node_modules\\@aws-cdk\\core\\lib\\private\\prepare-app.js:36:16)",
+              "Object.synthesize (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-kernel-IcbmOi\\node_modules\\@aws-cdk\\core\\lib\\private\\synthesis.js:13:19)",
+              "App.synth (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-kernel-IcbmOi\\node_modules\\@aws-cdk\\core\\lib\\stage.js:71:41)",
+              "C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:8228:134",
+              "Kernel._wrapSandboxCode (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:8840:24)",
+              "C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:8228:107",
+              "Kernel._ensureSync (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:8821:28)",
+              "Kernel.invoke (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:8228:34)",
+              "KernelHost.processRequest (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:9761:36)",
+              "KernelHost.run (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:9724:22)",
+              "Immediate._onImmediate (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:9725:46)",
+              "processImmediate (node:internal/timers:464:21)"
+            ]
+          }
+        ]
+      }
+    },
+    "Webportal-stack": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://145158422295/eu-west-1",
+      "properties": {
+        "templateFile": "Webportal-stack.template.json"
+      },
+      "dependencies": [
+        "Webportal-RDS-stack"
+      ],
+      "metadata": {
+        "/Webportal-stack/WebportalApplication": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebportalApplication",
+            "trace": [
+              "C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:8412:58",
+              "Kernel._wrapSandboxCode (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:8840:24)",
+              "Kernel._create (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:8412:34)",
+              "Kernel.create (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:8153:29)",
+              "KernelHost.processRequest (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:9761:36)",
+              "KernelHost.run (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:9724:22)",
+              "Immediate._onImmediate (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:9725:46)",
+              "processImmediate (node:internal/timers:464:21)"
+            ]
+          }
+        ],
+        "/Webportal-stack/WebportalApplicationVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebportalApplicationVersion",
+            "trace": [
+              "C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:8412:58",
+              "Kernel._wrapSandboxCode (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:8840:24)",
+              "Kernel._create (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:8412:34)",
+              "Kernel.create (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:8153:29)",
+              "KernelHost.processRequest (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:9761:36)",
+              "KernelHost.run (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:9724:22)",
+              "Immediate._onImmediate (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:9725:46)",
+              "processImmediate (node:internal/timers:464:21)"
+            ]
+          }
+        ],
+        "/Webportal-stack/WebportalApplicationConfiguration": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebportalApplicationConfiguration",
+            "trace": [
+              "C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:8412:58",
+              "Kernel._wrapSandboxCode (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:8840:24)",
+              "Kernel._create (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:8412:34)",
+              "Kernel.create (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:8153:29)",
+              "KernelHost.processRequest (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:9761:36)",
+              "KernelHost.run (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:9724:22)",
+              "Immediate._onImmediate (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:9725:46)",
+              "processImmediate (node:internal/timers:464:21)"
+            ]
+          }
+        ],
+        "/Webportal-stack/WebportalEnvironment": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebportalEnvironment",
+            "trace": [
+              "C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:8412:58",
+              "Kernel._wrapSandboxCode (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:8840:24)",
+              "Kernel._create (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:8412:34)",
+              "Kernel.create (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:8153:29)",
+              "KernelHost.processRequest (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:9761:36)",
+              "KernelHost.run (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:9724:22)",
+              "Immediate._onImmediate (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:9725:46)",
+              "processImmediate (node:internal/timers:464:21)"
+            ]
+          }
+        ],
+        "/Webportal-stack/WebportalRecordSet": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebportalRecordSet",
+            "trace": [
+              "C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:8412:58",
+              "Kernel._wrapSandboxCode (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:8840:24)",
+              "Kernel._create (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:8412:34)",
+              "Kernel.create (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:8153:29)",
+              "KernelHost.processRequest (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:9761:36)",
+              "KernelHost.run (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:9724:22)",
+              "Immediate._onImmediate (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:9725:46)",
+              "processImmediate (node:internal/timers:464:21)"
+            ]
+          }
+        ],
+        "/Webportal-stack/WebportalSpecificRecordSet": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebportalSpecificRecordSet",
+            "trace": [
+              "C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:8412:58",
+              "Kernel._wrapSandboxCode (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:8840:24)",
+              "Kernel._create (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:8412:34)",
+              "Kernel.create (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:8153:29)",
+              "KernelHost.processRequest (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:9761:36)",
+              "KernelHost.run (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:9724:22)",
+              "Immediate._onImmediate (C:\\Users\\DAGKAR~1\\AppData\\Local\\Temp\\jsii-java-runtime4544689775180904917\\lib\\program.js:9725:46)",
+              "processImmediate (node:internal/timers:464:21)"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "runtime": {
+    "libraries": {
+      "@aws-cdk/cdk-assets-schema": "1.45.0",
+      "@aws-cdk/cloud-assembly-schema": "1.45.0",
+      "@aws-cdk/cx-api": "1.45.0",
+      "@aws-cdk/core": "1.45.0",
+      "@aws-cdk/region-info": "1.45.0",
+      "@aws-cdk/aws-iam": "1.45.0",
+      "@aws-cdk/aws-cloudwatch": "1.45.0",
+      "@aws-cdk/aws-logs": "1.45.0",
+      "@aws-cdk/aws-events": "1.45.0",
+      "@aws-cdk/aws-kms": "1.45.0",
+      "@aws-cdk/aws-s3": "1.45.0",
+      "@aws-cdk/aws-ssm": "1.45.0",
+      "@aws-cdk/aws-ec2": "1.45.0",
+      "@aws-cdk/assets": "1.45.0",
+      "@aws-cdk/aws-s3-assets": "1.45.0",
+      "@aws-cdk/aws-sqs": "1.45.0",
+      "@aws-cdk/aws-lambda": "1.45.0",
+      "@aws-cdk/aws-sam": "1.45.0",
+      "@aws-cdk/aws-secretsmanager": "1.45.0",
+      "@aws-cdk/aws-rds": "1.45.0",
+      "@aws-cdk/aws-route53": "1.45.0",
+      "@aws-cdk/aws-elasticbeanstalk": "1.45.0",
+      "jsii-runtime": "Java/1.8.0_161"
+    }
+  }
+}

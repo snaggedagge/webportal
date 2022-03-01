@@ -1,0 +1,36 @@
+<div>
+  <mat-toolbar color="primary">
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>Webportal</span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <mat-icon>favorite</mat-icon>
+    </button>
+  </mat-toolbar>
+</div>
+
+
+
+<div class="center">
+
+  <mat-card class="example-card" *ngFor="let website of websites">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{website.websiteName}}</mat-card-title>
+      <mat-card-subtitle>Last seen {{calculateDiff(website.lastSeen) | number: '1.0-0'}} minutes ago</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image [src]="'data:image/png;base64,' + website.imageBase64" alt="Photo of a Shiba Inu">
+    <mat-card-content>
+      <p>{{website.websiteDescription}}</p>
+
+      <p *ngIf="website.infoLink">More info about the project can be found <a [href]="website.infoLink">here</a> </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <a [href]="website.localWebsiteLink" mat-raised-button color="primary">Enter local page</a>
+      <a [href]="website.websiteLink" mat-raised-button color="primary">Enter page</a>
+    </mat-card-actions>
+  </mat-card>
+
+</div>
