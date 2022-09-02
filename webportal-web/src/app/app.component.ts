@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {Website} from "./models/website";
 import {WebsitesService} from "./services/websites.service";
+import {Address} from "./models/address";
 
 @Component({
   selector: 'app-root',
@@ -9,12 +10,13 @@ import {WebsitesService} from "./services/websites.service";
 })
 export class AppComponent {
   websites: Website[] = [];
+  address: Address | undefined;
 
   constructor(private websiteService: WebsitesService) { }
 
   ngOnInit(): void {
-    this.websiteService.getWebsites()
-      .subscribe(websites => this.websites = websites);
+    this.websiteService.getWebsites().subscribe(websites => this.websites = websites);
+    this.websiteService.getIpAddress().subscribe(address => this.address = address);
   }
 
   calculateDiff(dateSent:Date): string {
@@ -32,5 +34,16 @@ export class AppComponent {
       return diffHours.toFixed(0) + ' hours';
     }
     return diffMinutes.toFixed(0) + ' minutes';
+  }
+
+  getLinkURL(website: Website): string {
+    if (this.address) {
+      const url = website.websiteLink.replace('https://', '').replace('http://', '');
+      // If URL is a IP address and the same we originate from (Eg. local network), we must use the local IP instead
+      return url === this.address.ip ? website.localWebsiteLink : website.websiteLink;
+    }
+    else {
+      return website.websiteLink;
+    }
   }
 }
